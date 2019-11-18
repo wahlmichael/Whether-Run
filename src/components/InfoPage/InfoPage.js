@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Calendar from 'react-calendar';
+import {connect} from 'react-redux';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class CalendarView extends Component {
+  state = {
+    date: new Date(),
+  }
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+  onChange = date => this.setState({ date })
 
-export default InfoPage;
+  render() {
+    const tileContent = ({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>run today</p> : null;
+    return (
+      <div>
+        <Calendar
+          className='calendarClass'
+          tileContent={tileContent}
+          onChange={this.onChange}
+          value={this.state.date}
+        />
+      </div>
+    );
+  }
+}
+
+export default connect()(CalendarView);
