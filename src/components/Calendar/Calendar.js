@@ -11,6 +11,7 @@ class CalendarView extends Component {
 
   render() {
     const tileContent = ({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>run today</p> : null;
+    const tileClassName = ({ activeStartDate, date, view }) => 'calendarTile';
     return (
       <div>
         <Calendar
@@ -18,6 +19,8 @@ class CalendarView extends Component {
           tileContent={tileContent}
           onChange={this.onChange}
           value={this.state.date}
+          tileClassName={tileClassName}
+          calendarType='US'
         />
       </div>
     );

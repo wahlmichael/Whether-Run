@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0px;
 }
 
@@ -49,12 +50,31 @@ input {
 }
 
 .calendarClass {
-    width: 90vw;
-    height: 70vh;
+    width: 100%;
+    height: 90vh;
     margin: 0 auto;
+    background: #d7d7d7;
+    color: black;
 }
 
-.react-calendar-tile {
-    color: green;
-    background: black;
+.calendarTile {
+    color: black;
+    height: 9vw;
 }
+
+.calendarClass button {
+    border: 1px solid #d3d3d3;
+}
+
+.react-calendar__tile--active {
+    background: #e6e6e6;
+  }
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: #e6e6e6;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr{
+    text-decoration: none;
+  }
