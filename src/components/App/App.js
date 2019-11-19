@@ -13,7 +13,6 @@ import Nav from '../Nav/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import Calendar from '../Calendar/Calendar';
 import MyRuns from '../MyRuns/MyRuns.js'
 

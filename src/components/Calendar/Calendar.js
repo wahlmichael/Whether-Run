@@ -3,6 +3,10 @@ import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
 import TileContent from '../TileContent/TileContent.js'
 
+const mapReduxStateToProps =(reduxState)=>{
+  return reduxState;
+}
+
 class CalendarView extends Component {
   state = {
     date: new Date(),
@@ -15,13 +19,15 @@ class CalendarView extends Component {
   }
 
   render() {
-    const tileContent = ({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>run today</p> : null;
+    // const tileContent = ({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>run today</p> : null;
     const tileClassName = ({ activeStartDate, date, view }) => 'calendarTile';
     return (
       <div>
         <Calendar
           className='calendarClass'
-          tileContent={<TileContent />}
+          tileContent={<TileContent
+          run={this.props.runsForCalendarReducer}
+          />}
           onChange={this.onChange}
           value={this.state.date}
           tileClassName={tileClassName}
@@ -29,9 +35,11 @@ class CalendarView extends Component {
         />
         <pre>{JSON.stringify(this.state.date.getDate())}</pre>
         <pre>{JSON.stringify(this.state.date.getMonth())}</pre>
+        <pre>{JSON.stringify(this.state.date.getYear())}</pre>
+        <pre>{JSON.stringify(this.props.runsForCalendarReducer)}</pre>
       </div>
     );
   }
 }
 
-export default connect()(CalendarView);
+export default connect(mapReduxStateToProps)(CalendarView);

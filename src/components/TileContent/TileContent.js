@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+const mapReduxStateToProps =(reduxState)=>{
+  return reduxState;
+}
+
 class TileContent extends Component {
   render() {
     return (
       <div>
-          Something
+          {this.props.run.date}
       </div>
     );
   }
 }
 
-export default connect()(TileContent);
+export default connect(mapReduxStateToProps)(TileContent);
