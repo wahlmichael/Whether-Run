@@ -20,7 +20,7 @@ class CalendarView extends Component {
 
   runDateCheck = (date) => {
     for (let i = 0; i < this.props.runsForCalendarReducer.length; i++) {
-      if(date.getDate() === this.props.runsForCalendarReducer[i].day && date.getMonth() === this.props.runsForCalendarReducer[i].month && date.getYear() === this.props.runsForCalendarReducer[i].year){
+      if(date.getDate() === this.props.runsForCalendarReducer[i].day && date.getMonth() === this.props.runsForCalendarReducer[i].month && date.getFullYear() === this.props.runsForCalendarReducer[i].year){
         return [true, this.props.runsForCalendarReducer[i]]
       }
     }
