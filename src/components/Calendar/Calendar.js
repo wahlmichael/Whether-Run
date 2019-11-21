@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
-import TileContent from '../TileContent/TileContent.js'
+import TileContent from '../TileContent/TileContent.js';
+import RunPopup from '../RunPopup/RunPopup.js';
 
 const mapReduxStateToProps =(reduxState)=>{
   return reduxState;
@@ -9,9 +10,10 @@ const mapReduxStateToProps =(reduxState)=>{
 
 class CalendarView extends Component {
   state = {
-    date: new Date(),
+    date: new Date(), 
   }
 
+  // Displays calendar information
   onChange = date => this.setState({ date })
 
   componentDidMount = () => {
@@ -26,6 +28,19 @@ class CalendarView extends Component {
     }
     return false
   }
+
+  // Handles popup for runs
+  // constructor(props){  
+  //   super(props);  
+  //   this.state = { showPopup: false };  
+  //   }  
+    
+    togglePopup() {  
+      this.setState({  
+            ...this.state,
+          showPopup: !this.state.showPopup,
+      });  
+     }  
 
   render() {
 
@@ -44,6 +59,8 @@ class CalendarView extends Component {
           calendarType='US'
         />
       }
+      <button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>
+      {this.state.showPopup ?  <RunPopup  togglePopup={this.togglePopup.bind(this)}/> : null  }  
       </div>
     );
   }

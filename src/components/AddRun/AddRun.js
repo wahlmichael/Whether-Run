@@ -28,7 +28,7 @@ class AddRun extends Component {
             ...this.state,
             runToSend: {
                 day: this.state.date.substr(8, 2),
-                month: this.state.date.substr(5, 2),
+                month: this.state.date.substr(5, 2) - 1,
                 year: this.state.date.substr(0, 4),
                 distance: this.state.distance,
                 time: this.state.time,
