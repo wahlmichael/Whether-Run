@@ -8,6 +8,33 @@ const mapReduxStateToProps =(reduxState)=>{
 }
 
 class AddRun extends Component {
+    state = {
+        date: '',
+        distance: '',
+        time: '',
+        runToSend: {},
+    }
+
+    handleChange = (event, property) => {
+        console.log(event.target.value)
+        this.setState({
+            ...this.state,
+            [property]: event.target.value,
+        })
+    }
+
+    handleSubmit = () => {
+        this.setState({
+            ...this.state,
+            runToSend: {
+                day: this.state.date.substr(8, 9),
+                month: this.state.date.substr(5, 6),
+                year: this.state.date.substr(0, 3),
+                distance: this.state.distance,
+                time: this.state.time,
+            }
+        })
+    }
   render() {
     return (
       <div className="add-run-container">
@@ -25,15 +52,15 @@ class AddRun extends Component {
                 <form>
                     <p>
                         <label>Date</label>
-                        <input type="date"></input>
+                        <input onChange={(event) => {this.handleChange(event, 'date')}} type="date"></input>
                     </p>
                     <p>
                         <label>Distance</label>
-                        <input type="text"></input>
+                        <input onChange={(event) => {this.handleChange(event, 'distance')}} type="text"></input>
                     </p>
                     <p>
                         <label>Time</label>
-                        <input type="text"></input>
+                        <input onChange={(event) => {this.handleChange(event, 'time')}} type="text"></input>
                     </p>
                     <p>
                         <label>Shoes</label>
@@ -44,11 +71,12 @@ class AddRun extends Component {
                         <textarea></textarea>
                     </p>
                     <p className="full">
-                        <button>Submit</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
                     </p>
                 </form>
              </div>
          </div>
+         <pre>{JSON.stringify(this.state)}</pre>
       </div>
 
     );

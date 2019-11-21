@@ -18,6 +18,20 @@ router.get('/', (req, res) => {
         })
 });
 
+router.post('/', (req, res) => {
+    const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "time", "user_id")
+                       VALUES ($1, $2, $3, $4, $5, $6);`;
+    const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.time, req.user.id];
+    pool.query(queryText, queryValues)
+    .then((() => {
+        res.sendStatus(200)
+    }))
+    .catch((error) => {
+        console.log('error in POST', error);
+        res.sendStatus(500);
+    })                  
+})
+
 /**
  * POST route template
  */
