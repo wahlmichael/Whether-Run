@@ -10,7 +10,6 @@ const mapReduxStateToProps =(reduxState)=>{
 class CalendarView extends Component {
   state = {
     date: new Date(),
-    days: [12,14,18]
   }
 
   onChange = date => this.setState({ date })
@@ -21,9 +20,6 @@ class CalendarView extends Component {
 
   runDateCheck = (date) => {
     for (let i = 0; i < this.props.runsForCalendarReducer.length; i++) {
-      console.log(this.props.runsForCalendarReducer)
-      console.log(date.getDate())
-      console.log(date.getYear())
       if(date.getDate() === this.props.runsForCalendarReducer[i].day && date.getMonth() === this.props.runsForCalendarReducer[i].month && date.getYear() === this.props.runsForCalendarReducer[i].year){
         return [true, this.props.runsForCalendarReducer[i]]
       }
@@ -34,7 +30,6 @@ class CalendarView extends Component {
   render() {
 
     const tileContent = ({ date }) => {
-      console.log(date)
       return this.runDateCheck(date)[0] ? <TileContent run={this.runDateCheck(date)[1]}/> : null
     }
 
@@ -49,10 +44,6 @@ class CalendarView extends Component {
           calendarType='US'
         />
       }
-        <pre>{JSON.stringify(this.state.date.getDate())}</pre>
-        <pre>{JSON.stringify(this.state.date.getMonth())}</pre>
-        <pre>{JSON.stringify(this.state.date.getYear())}</pre> 
-        <pre>{JSON.stringify(this.props.runsForCalendarReducer)}</pre>
       </div>
     );
   }

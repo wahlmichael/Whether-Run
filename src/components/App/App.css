@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+*{
+    box-sizing: border-box;
+}
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0px;
@@ -9,7 +12,7 @@ body {
     margin: 50px;
 }
 
-form {
+.login-form {
     background-color: #dbd5d5;
     width: 30%;
     height: 250px;
