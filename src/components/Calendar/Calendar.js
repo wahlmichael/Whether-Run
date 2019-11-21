@@ -35,12 +35,20 @@ class CalendarView extends Component {
   //   this.state = { showPopup: false };  
   //   }  
     
-    togglePopup() {  
+    togglePopup(date) {  
       this.setState({  
             ...this.state,
           showPopup: !this.state.showPopup,
-      });  
+          clickedDate: date,
+      }, () => {
+        console.log('in date', this.state.clickedDate) 
+      });
+ 
      }  
+
+     onClickDay = (value) => {
+       this.togglePopup(value)
+      }
 
   render() {
 
@@ -56,11 +64,13 @@ class CalendarView extends Component {
           tileContent={tileContent}
           onChange={this.onChange}
           value={this.state.date}
+          onClickDay={this.onClickDay}
           calendarType='US'
         />
       }
       <button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>
-      {this.state.showPopup ?  <RunPopup  togglePopup={this.togglePopup.bind(this)}/> : null  }  
+      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }  
+      <pre>{JSON.stringify(this.state.date)}</pre>
       </div>
     );
   }

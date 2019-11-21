@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET Runs
+ * GETs all Runs
  */
 router.get('/', (req, res) => {
     const queryText = `SELECT * FROM "runs"
@@ -19,6 +19,30 @@ router.get('/', (req, res) => {
         })
 });
 
+/**
+ * GETs a run on a specific date
+ */
+
+router.get('/specific', (req, res) => {
+    const queryText = `SELECT * FROM "runs"
+                       WHERE "user_id" = $1 AND "day" = $2 AND "month" = $3 AND "year" = $4
+                       ORDER BY "run_id";`;
+    const queryValues = [req.user.id, req.body.day, req.body.month, req.body.year]
+    pool.query(queryText, queryValues)
+        .then((response => {
+            res.send(response.rows)
+        }))
+        .catch((error) => {
+            console.log('error in individual GET', error);
+            res.sendStatus(500);
+        })
+});
+
+
+/**
+ * POSTs a run
+ */
+
 router.post('/', (req, res) => {
     console.log(req.body)
     const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "time", "user_id")
@@ -33,12 +57,5 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     })                  
 })
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
-});
 
 module.exports = router;
