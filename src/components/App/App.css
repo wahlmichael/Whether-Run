@@ -57,13 +57,13 @@ input {
     color: black;
 }
 
-.calendarTile {
-    color: black;
-    height: 9vw;
-}
-
 .calendarClass button {
     border: 1px solid #d3d3d3;
+}
+
+.react-calendar__tile{
+    color: black;
+    height: 9vw;
 }
 
 .react-calendar__tile--active {

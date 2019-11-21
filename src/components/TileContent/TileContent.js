@@ -6,11 +6,17 @@ const mapReduxStateToProps =(reduxState)=>{
 }
 
 class TileContent extends Component {
+
+  componentDidMount = () => {
+    console.log(this.props.run)
+  }
+
   render() {
     return (
       <div>
-          {this.props.run.date}
+         run on day {this.props.date}
       </div>
+
     );
   }
 }
