@@ -7,14 +7,10 @@ const mapReduxStateToProps =(reduxState)=>{
 
 class TileContent extends Component {
 
-  componentDidMount = () => {
-    console.log(this.props.run)
-  }
-
   render() {
     return (
       <div>
-         run on day {this.props.date}
+         {this.props.run.distance} run today!
       </div>
 
     );
