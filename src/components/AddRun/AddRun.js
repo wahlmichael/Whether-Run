@@ -27,13 +27,17 @@ class AddRun extends Component {
         this.setState({
             ...this.state,
             runToSend: {
-                day: this.state.date.substr(8, 9),
-                month: this.state.date.substr(5, 6),
-                year: this.state.date.substr(0, 3),
+                day: this.state.date.substr(8, 2),
+                month: this.state.date.substr(5, 2),
+                year: this.state.date.substr(0, 4),
                 distance: this.state.distance,
                 time: this.state.time,
             }
+        }, () => {
+            this.props.dispatch({type: 'ADD_RUN_SAGA', payload: this.state.runToSend})
+            console.log(this.state.runToSend)
         })
+
     }
   render() {
     return (

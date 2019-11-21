@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "time", "user_id")
                        VALUES ($1, $2, $3, $4, $5, $6);`;
     const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.time, req.user.id];
