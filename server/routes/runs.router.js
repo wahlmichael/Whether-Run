@@ -6,6 +6,7 @@ const router = express.Router();
  * GETs all Runs
  */
 router.get('/', (req, res) => {
+    console.log(req.user.id)
     const queryText = `SELECT * FROM "runs"
                         WHERE "user_id" = $1
                         ORDER BY "run_id";`;

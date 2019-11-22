@@ -58,7 +58,7 @@ class CalendarView extends Component {
 
     return (
       <div>
-        {this.props.runsForCalendarReducer.length >= 1 && 
+        {
           <Calendar
           className='calendarClass'
           tileContent={tileContent}
@@ -68,8 +68,8 @@ class CalendarView extends Component {
           calendarType='US'
         />
       }
-      {/* <button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>
-      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }   */}
+      {/* {<button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>} */}
+      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }
       {/* <pre>{JSON.stringify(this.state.date)}</pre> */}
       </div>
     );

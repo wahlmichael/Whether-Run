@@ -9,7 +9,7 @@
 .nav {
   overflow: hidden;
   background-color: #545454;
-  height: 7vw;
+  height: 11vh;
 }
 
 .nav-link {
@@ -26,6 +26,8 @@
   border:none;
   cursor: pointer;
   outline:0;
+  margin: auto;
+  height: 100%;
 }
 
 .nav-link:hover {

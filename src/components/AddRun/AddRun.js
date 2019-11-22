@@ -48,8 +48,10 @@ class AddRun extends Component {
                 <h3>Please enter the information of your run</h3>
                 <ul className="run-info-list">
                     <li>Date</li>
-                    <li>Distance</li>
-                    <li>Time</li>
+                    <li>Distance in miles</li>
+                    <li>Time in minutes</li>
+                    <li>Shoes used</li>
+                    <li>Leave a comment!</li>
                 </ul>
              </div>
              <div className="run-input">
