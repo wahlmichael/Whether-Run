@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 
 import './RunPopup.css';
 
+const mapReduxStateToProps =(reduxState)=>{
+    return reduxState;
+  }
+
 class RunPopup extends Component {
     componentDidMount = () => {
         const dateToSend = {
@@ -17,12 +21,12 @@ class RunPopup extends Component {
       <div className="popup">
           <div className="popup-inner">
             This is the run popup
-            <pre>{JSON.stringify(this.props.date.getDate())}</pre>
             <button onClick={this.props.togglePopup}>Close</button>
+            <pre>{JSON.stringify(this.props.singleRunReducer)}</pre>
           </div>
       </div>
     );
   }
 }
 
-export default connect()(RunPopup);
+export default connect(mapReduxStateToProps)(RunPopup);

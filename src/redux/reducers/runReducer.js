@@ -7,5 +7,5 @@ const runsForCalendarReducer = (state = [], action) => {
     }
   };
 
-  export default runsForCalendarReducer;
-  
+
+export default runsForCalendarReducer

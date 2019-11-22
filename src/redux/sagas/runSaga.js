@@ -32,11 +32,11 @@ function* fetchSpecificRun(action) {
             }
         })
         yield put({
-            type: 'SET_SPECIFIC_RUN',
+            type: 'SET_SINGLE_RUN',
             payload: response.data
         });
     } catch (error) {
-        console.log('Specifc run get failed', error);
+        console.log('Specific run get failed', error);
     }
 }
 
