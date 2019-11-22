@@ -5,6 +5,12 @@ import './RunPopup.css';
 
 class RunPopup extends Component {
     componentDidMount = () => {
+        const dateToSend = {
+            day: this.props.date.getDate(),
+            month: this.props.date.getMonth(),
+            year: this.props.date.getFullYear(),
+        }
+        this.props.dispatch({type: 'FETCH_SPECIFIC_RUN', payload: dateToSend})
     }
   render() {
     return (

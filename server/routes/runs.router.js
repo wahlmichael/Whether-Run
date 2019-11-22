@@ -23,21 +23,20 @@ router.get('/', (req, res) => {
  * GETs a run on a specific date
  */
 
-router.get('/specific', (req, res) => {
+router.post('/specific', (req, res) => {
     const queryText = `SELECT * FROM "runs"
                        WHERE "user_id" = $1 AND "day" = $2 AND "month" = $3 AND "year" = $4
-                       ORDER BY "run_id";`;
+                       ORDER BY "run_id" DESC;`;
     const queryValues = [req.user.id, req.body.day, req.body.month, req.body.year]
     pool.query(queryText, queryValues)
         .then((response => {
             res.send(response.rows)
         }))
         .catch((error) => {
-            console.log('error in individual GET', error);
+            console.log('error in specific GET', error);
             res.sendStatus(500);
         })
 });
-
 
 /**
  * POSTs a run
