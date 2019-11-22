@@ -12,7 +12,7 @@ class TileContent extends Component {
   render() {
     return (
       <div className="tileContent">
-         <i class="green fas fa-running"></i>
+         <i className="green fas fa-running"></i>
          <div>
            <span className="inTile">{this.props.run.distance}</span>
            <br/>

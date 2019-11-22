@@ -20,9 +20,13 @@ class RunPopup extends Component {
     return (
       <div className="popup">
           <div className="popup-inner">
-            This is the run popup
+            <h1>Run Scheduled for Today!</h1>
+            <ul>
+                <li>Date: {this.props.singleRunReducer.month}/{this.props.singleRunReducer.month}/{this.props.singleRunReducer.year}</li>
+                <li>Distance: {this.props.singleRunReducer.distance}</li>
+            </ul>
             <button onClick={this.props.togglePopup}>Close</button>
-            <pre>{JSON.stringify(this.props.singleRunReducer)}</pre>
+            {/* <pre>{JSON.stringify(this.props.singleRunReducer)}</pre> */}
           </div>
       </div>
     );

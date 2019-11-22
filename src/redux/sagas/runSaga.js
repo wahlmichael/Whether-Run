@@ -33,7 +33,7 @@ function* fetchSpecificRun(action) {
         })
         yield put({
             type: 'SET_SINGLE_RUN',
-            payload: response.data
+            payload: response.data[0]
         });
     } catch (error) {
         console.log('Specific run get failed', error);
