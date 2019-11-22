@@ -68,9 +68,9 @@ class CalendarView extends Component {
           calendarType='US'
         />
       }
-      <button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>
-      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }  
-      <pre>{JSON.stringify(this.state.date)}</pre>
+      {/* <button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>
+      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }   */}
+      {/* <pre>{JSON.stringify(this.state.date)}</pre> */}
       </div>
     );
   }

@@ -38,8 +38,16 @@ class MyRuns extends Component {
               </thead>
               <tbody>
                 {this.props.runsForCalendarReducer.map(run => {
+                  var runClass = '';
+                  console.log(run.completed)
+                  if (run.completed){
+                    runClass='completedRun'
+                  } else {
+                    runClass='incompleteRun'
+                  }
+                  console.log(runClass)
                   return <tr 
-                         key={run.run_id}><td>{run.month}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
+                         key={run.run_id} className={runClass}><td>{run.month}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
                          <td><span onClick={() => this.handleDeleteClick(run.run_id)} className="deleteRun">delete</span></td>
                          <td><span onClick={() => this.handleCompleteClick(run.run_id)} className="completeRun">complete</span></td>
                          </tr>

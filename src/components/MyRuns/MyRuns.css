@@ -14,3 +14,7 @@
     width: 100%;
     text-align: center;
 }
+
+.completedRun {
+    background: #99ff99;
+}

@@ -10,7 +10,9 @@ class TileContent extends Component {
   render() {
     return (
       <div>
-         {this.props.run.distance} run today!
+         <span className="blue">{this.props.run.distance}</span>
+         <br/>
+         <span className="green">{this.props.run.time}</span>
       </div>
 
     );
