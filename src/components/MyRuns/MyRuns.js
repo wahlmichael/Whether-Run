@@ -16,6 +16,11 @@ class MyRuns extends Component {
     this.props.dispatch({type: 'DELETE_RUN', payload: id})
   }
 
+  handleCompleteClick = (id) => {
+    console.log('completing run at', id)
+    this.props.dispatch({type: 'COMPLETE_RUN', payload: id})
+  }
+
   render() {
     return (
       <div className="add-run-container">
@@ -33,8 +38,11 @@ class MyRuns extends Component {
               </thead>
               <tbody>
                 {this.props.runsForCalendarReducer.map(run => {
-                  return <tr key={run.run_id}><td>{run.month}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
-                         <td><span onClick={() => this.handleDeleteClick(run.run_id)} className="deleteRun">delete</span></td><td></td></tr>
+                  return <tr 
+                         key={run.run_id}><td>{run.month}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
+                         <td><span onClick={() => this.handleDeleteClick(run.run_id)} className="deleteRun">delete</span></td>
+                         <td><span onClick={() => this.handleCompleteClick(run.run_id)} className="completeRun">complete</span></td>
+                         </tr>
                 })}
               </tbody>
             </table>

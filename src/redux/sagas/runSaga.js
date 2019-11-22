@@ -40,6 +40,21 @@ function* fetchSpecificRun(action) {
     }
 }
 
+function* completeRun(action) {
+    try {
+        yield axios({
+            method: 'PUT',
+            url: '/api/runs',
+            data: {
+                run_id: action.payload,
+            }
+        })
+        yield put ({type: "FETCH_RUNS_FOR_CALENDAR"})
+    } catch (error) {
+        console.log('Run PUT failed', error);
+    }
+}
+
 function* deleteRun(action) {
     try {
         yield axios({
@@ -68,6 +83,7 @@ function* runSaga() {
     yield takeLatest('ADD_RUN_SAGA', addRun);
     yield takeLatest('FETCH_SPECIFIC_RUN', fetchSpecificRun);
     yield takeLatest('DELETE_RUN', deleteRun);
+    yield takeLatest('COMPLETE_RUN', completeRun)
 }
 
 export default runSaga;

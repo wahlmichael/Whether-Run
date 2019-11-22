@@ -57,6 +57,25 @@ router.post('/', (req, res) => {
 })
 
 /**
+ * PUTs a run completed
+ */
+
+router.put('/', (req, res) => {
+    const queryText = `UPDATE "runs"
+                       SET "completed" = true
+                       WHERE "run_id" = $1;`;
+    const queryValues = [req.body.run_id];
+    pool.query(queryText, queryValues)
+    .then((() => {
+        res.sendStatus(200)
+    }))
+    .catch((error) => {
+        console.log('error in PUT', error);
+        res.sendStatus(500);
+    })                  
+})
+
+/**
  * DELETEs a run
  */
 

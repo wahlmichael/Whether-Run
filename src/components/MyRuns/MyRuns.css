@@ -3,3 +3,14 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.completeRun {
+    color: green;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.myRuns table {
+    width: 100%;
+    text-align: center;
+}
