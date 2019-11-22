@@ -43,7 +43,6 @@ router.post('/specific', (req, res) => {
  */
 
 router.post('/', (req, res) => {
-    console.log(req.body)
     const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "time", "user_id")
                        VALUES ($1, $2, $3, $4, $5, $6);`;
     const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.time, req.user.id];
@@ -53,6 +52,24 @@ router.post('/', (req, res) => {
     }))
     .catch((error) => {
         console.log('error in POST', error);
+        res.sendStatus(500);
+    })                  
+})
+
+/**
+ * DELETEs a run
+ */
+
+router.delete('/', (req, res) => {
+    const queryText = `DELETE FROM "runs"
+                       WHERE "run_id" = $1;`;
+    const queryValues = [req.body.run_id];
+    pool.query(queryText, queryValues)
+    .then((() => {
+        res.sendStatus(200)
+    }))
+    .catch((error) => {
+        console.log('error in DELETE', error);
         res.sendStatus(500);
     })                  
 })

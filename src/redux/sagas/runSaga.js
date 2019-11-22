@@ -11,7 +11,10 @@ function* fetchRunsForCalendar() {
             method: 'GET',
             url: '/api/runs',
         })
-        yield put({ type: 'SET_RUNS_FOR_CALENDAR', payload: response.data});
+        yield put({
+            type: 'SET_RUNS_FOR_CALENDAR',
+            payload: response.data
+        });
     } catch (error) {
         console.log('Run get failed', error);
     }
@@ -28,9 +31,27 @@ function* fetchSpecificRun(action) {
                 year: action.payload.year,
             }
         })
-        yield put({ type: 'SET_SPECIFIC_RUN', payload: response.data});
+        yield put({
+            type: 'SET_SPECIFIC_RUN',
+            payload: response.data
+        });
     } catch (error) {
         console.log('Specifc run get failed', error);
+    }
+}
+
+function* deleteRun(action) {
+    try {
+        yield axios({
+            method: 'DELETE',
+            url: '/api/runs',
+            data: {
+                run_id: action.payload,
+            }
+        })
+        yield put ({type: "FETCH_RUNS_FOR_CALENDAR"})
+    } catch (error) {
+        console.log('Run DELETE failed', error);
     }
 }
 
@@ -45,7 +66,8 @@ function* addRun(action) {
 function* runSaga() {
     yield takeLatest('FETCH_RUNS_FOR_CALENDAR', fetchRunsForCalendar);
     yield takeLatest('ADD_RUN_SAGA', addRun);
-    yield takeLatest('FETCH_SPECIFIC_RUN', fetchSpecificRun)
+    yield takeLatest('FETCH_SPECIFIC_RUN', fetchSpecificRun);
+    yield takeLatest('DELETE_RUN', deleteRun);
 }
 
 export default runSaga;

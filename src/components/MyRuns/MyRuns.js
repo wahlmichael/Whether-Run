@@ -13,7 +13,7 @@ class MyRuns extends Component {
   }
 
   handleDeleteClick = (id) => {
-    console.log('delete clicked', id)
+    this.props.dispatch({type: 'DELETE_RUN', payload: id})
   }
 
   render() {
