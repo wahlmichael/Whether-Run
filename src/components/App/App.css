@@ -54,7 +54,7 @@ input {
 
 .calendarClass {
     width: 100%;
-    height: 90vh;
+    height: 100%;
     margin: 0 auto;
     background: #d7d7d7;
     color: black;
@@ -93,4 +93,11 @@ input {
     left: 0;
 }
 
+.react-calendar__viewContainer {
+    height: 100%;
+}
+
+.react-calendar__month-view {
+    height: 100%;
+}
 

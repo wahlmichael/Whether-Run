@@ -17,4 +17,13 @@
 
 .weather-image {
     height: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.weather-data-in-tile {
+    position: absolute;
+    top: 0;
+    left: 35px;
 }

@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
 const handleWeatherData = (weatherData) => {
     const formattedData = []
     weatherData.forEach(day => {
-        console.log(day.datetime)
         const dayOfWeather = {
             date: day.datetime,
             high: day.high_temp,
@@ -36,7 +35,6 @@ const handleWeatherData = (weatherData) => {
         }
         formattedData.push(dayOfWeather)
     })
-    console.log(formattedData)
     return formattedData;
 }
 

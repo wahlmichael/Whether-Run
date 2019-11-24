@@ -34,7 +34,6 @@ class CalendarView extends Component {
 
   getWeatherForDay = (date) => {
     for (let i = 0; i < this.props.weatherReducer.length; i++) {
-      console.log(date.getMonth() + 1, Number(this.props.weatherReducer[i].date.substr(5,2)))
       if(date.getDate() === Number(this.props.weatherReducer[i].date.substr(8, 2)) && 
          date.getMonth() + 1 === Number(this.props.weatherReducer[i].date.substr(5, 2)) &&
          date.getFullYear() === Number(this.props.weatherReducer[i].date.substr(0, 4))){
@@ -85,7 +84,7 @@ class CalendarView extends Component {
       {/* {<button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>} */}
       {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }
       {/* <pre>{JSON.stringify(this.state.date)}</pre> */}
-      <pre>{JSON.stringify(this.props.weatherReducer)}</pre>
+      {/* <pre>{JSON.stringify(this.props.weatherReducer)}</pre> */}
       </div>
     );
   }
