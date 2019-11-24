@@ -23,11 +23,24 @@ class CalendarView extends Component {
 
   runDateCheck = (date) => {
     for (let i = 0; i < this.props.runsForCalendarReducer.length; i++) {
-      if(date.getDate() === this.props.runsForCalendarReducer[i].day && date.getMonth() === this.props.runsForCalendarReducer[i].month && date.getFullYear() === this.props.runsForCalendarReducer[i].year){
+      if(date.getDate() === this.props.runsForCalendarReducer[i].day &&
+        date.getMonth() === this.props.runsForCalendarReducer[i].month && 
+        date.getFullYear() === this.props.runsForCalendarReducer[i].year){
         return [true, this.props.runsForCalendarReducer[i]]
       }
     }
-    return false
+    return [true, null]
+  }
+
+  getWeatherForDay = (date) => {
+    for (let i = 0; i < this.props.weatherReducer.length; i++) {
+      console.log(date.getMonth() + 1, Number(this.props.weatherReducer[i].date.substr(5,2)))
+      if(date.getDate() === Number(this.props.weatherReducer[i].date.substr(8, 2)) && 
+         date.getMonth() + 1 === Number(this.props.weatherReducer[i].date.substr(5, 2)) &&
+         date.getFullYear() === Number(this.props.weatherReducer[i].date.substr(0, 4))){
+        return this.props.weatherReducer[i];
+      }
+    }
   }
 
   // Handles popup for runs
@@ -54,7 +67,7 @@ class CalendarView extends Component {
   render() {
 
     const tileContent = ({ date }) => {
-      return this.runDateCheck(date)[0] ? <TileContent run={this.runDateCheck(date)[1]}/> : null
+      return this.runDateCheck(date)[0] ? <TileContent weather={this.getWeatherForDay(date)} run={this.runDateCheck(date)[1]}/> : null
     }
 
     return (

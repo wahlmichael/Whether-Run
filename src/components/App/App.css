@@ -62,6 +62,7 @@ input {
 
 .calendarClass button {
     border: 1px solid #d3d3d3;
+    position: relative;
 }
 
 .react-calendar__tile{
@@ -81,3 +82,15 @@ input {
 .react-calendar__month-view__weekdays__weekday abbr{
     text-decoration: none;
   }
+
+.react-calendar__tile button {
+    position: relative;
+}
+
+.react-calendar__tile abbr{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+

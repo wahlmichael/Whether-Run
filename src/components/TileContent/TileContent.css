@@ -10,3 +10,11 @@
     text-align: center;
     justify-content: space-around;
 }
+
+.tile-weather-content {
+    color: red;
+}
+
+.weather-image {
+    height: 3rem;
+}
