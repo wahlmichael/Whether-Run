@@ -18,6 +18,7 @@ class CalendarView extends Component {
 
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_RUNS_FOR_CALENDAR'})
+    this.props.dispatch({type: 'FETCH_WEATHER'})
   }
 
   runDateCheck = (date) => {
@@ -71,14 +72,7 @@ class CalendarView extends Component {
       {/* {<button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>} */}
       {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }
       {/* <pre>{JSON.stringify(this.state.date)}</pre> */}
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <pre>{JSON.stringify(this.props.weatherReducer)}</pre>
       </div>
     );
   }
