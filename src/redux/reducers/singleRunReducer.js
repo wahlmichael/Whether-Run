@@ -3,7 +3,7 @@ const singleRunReducer = (state = {}, action) => {
     case 'SET_SINGLE_RUN':
       return action.payload;
     default:
-      return state;
+      return {};
   }
 };  
 

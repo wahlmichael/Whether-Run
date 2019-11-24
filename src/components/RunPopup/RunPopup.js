@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import AddRunPopup from '../AddRunPopup/AddRunPopup.js'
 
 import './RunPopup.css';
 
@@ -20,13 +21,16 @@ class RunPopup extends Component {
     return (
       <div className="popup">
           <div className="popup-inner">
+            { this.props.singleRunReducer.day ? 
+            <>
             <h1>Run Scheduled for Today!</h1>
             <ul>
                 <li>Date: {this.props.singleRunReducer.month}/{this.props.singleRunReducer.month}/{this.props.singleRunReducer.year}</li>
                 <li>Distance: {this.props.singleRunReducer.distance}</li>
-            </ul>
+            </ul> </>: <AddRunPopup />
+            }
             <button onClick={this.props.togglePopup}>Close</button>
-            {/* <pre>{JSON.stringify(this.props.singleRunReducer)}</pre> */}
+            {<pre>{JSON.stringify(this.props.singleRunReducer)}</pre>}
           </div>
       </div>
     );

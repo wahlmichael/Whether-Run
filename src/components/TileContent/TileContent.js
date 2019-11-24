@@ -16,7 +16,7 @@ class TileContent extends Component {
       <div className="tile-weather-content">
         {this.props.weather && 
         <>
-        <img className="weather-image" src={`https://www.weatherbit.io/static/img/icons/${this.props.weather.image}.png`}></img> 
+        <img className="weather-image" alt={this.props.weather.image} src={`https://www.weatherbit.io/static/img/icons/${this.props.weather.image}.png`}></img> 
         <div className="weather-data-in-tile">
         <div>high: {this.props.weather.high}</div>
         <div>low: {this.props.weather.low}</div>
@@ -30,7 +30,7 @@ class TileContent extends Component {
          <div>
            <span className="inTile">{this.props.run.distance}</span>
            <br/>
-           <span className="inTile">{this.props.run.time}</span>
+           <span className="inTile">{this.props.run.run_type}</span>
          </div>
 
       </div>}

@@ -26,6 +26,7 @@ class CalendarView extends Component {
       if(date.getDate() === this.props.runsForCalendarReducer[i].day &&
         date.getMonth() === this.props.runsForCalendarReducer[i].month && 
         date.getFullYear() === this.props.runsForCalendarReducer[i].year){
+          console.log(this.props.runsForCalendarReducer[i])
         return [true, this.props.runsForCalendarReducer[i]]
       }
     }
@@ -53,10 +54,7 @@ class CalendarView extends Component {
             ...this.state,
           showPopup: !this.state.showPopup,
           clickedDate: date,
-      }, () => {
-        console.log('in date', this.state.clickedDate) 
       });
- 
      }  
 
      onClickDay = (value) => {

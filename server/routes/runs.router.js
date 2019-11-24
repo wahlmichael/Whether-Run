@@ -44,9 +44,9 @@ router.post('/specific', (req, res) => {
  */
 
 router.post('/', (req, res) => {
-    const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "time", "user_id")
+    const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "run_type", "user_id")
                        VALUES ($1, $2, $3, $4, $5, $6);`;
-    const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.time, req.user.id];
+    const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.runType, req.user.id];
     pool.query(queryText, queryValues)
     .then((() => {
         res.sendStatus(200)

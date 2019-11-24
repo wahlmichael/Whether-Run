@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {
     put,
-    takeLatest,
-    actionChannel
+    takeLatest
 } from 'redux-saga/effects';
 
 function* fetchWeather() {

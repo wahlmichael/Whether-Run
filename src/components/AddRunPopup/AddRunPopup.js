@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import './AddRun.css';
+import './AddRunPopup.css';
 
 const mapReduxStateToProps =(reduxState)=>{
   return reduxState;
 }
 
-class AddRun extends Component {
+class AddRunPopup extends Component {
     state = {
         date: '',
         distance: '',
-        runType: '',
+        time: '',
         runToSend: {},
     }
 
@@ -31,7 +31,7 @@ class AddRun extends Component {
                 month: this.state.date.substr(5, 2) - 1,
                 year: this.state.date.substr(0, 4),
                 distance: this.state.distance,
-                runType: this.state.runType,
+                time: this.state.time,
             }
         }, () => {
             this.props.dispatch({type: 'ADD_RUN_SAGA', payload: this.state.runToSend})
@@ -42,7 +42,6 @@ class AddRun extends Component {
   render() {
     return (
       <div className="add-run-container">
-         <h1 className="brand"> Add Run </h1>
          <div className="form-wrapper">
              <div className="info">
                 <h3>Please enter the information of your run</h3>
@@ -65,29 +64,28 @@ class AddRun extends Component {
                         <input onChange={(event) => {this.handleChange(event, 'distance')}} type="text"></input>
                     </p>
                     <p>
-                        <label>Run Type</label>
-                        <select onChange={(event) => {this.handleChange(event, 'runType')}} className="full">
-                            <option value="">Select</option>
-                            <option>Long Run</option>
-                            <option>Race Pace</option>
-                            <option>Easy</option>
-                            <option>Fartlek</option>
-                            <option>Hills</option>
-                            <option>Intervals</option>
-                        </select>
+                        <label>Time</label>
+                        <input onChange={(event) => {this.handleChange(event, 'time')}} type="text"></input>
                     </p>
-                    
+                    <p>
+                        <label>Shoes</label>
+                        <input type="text"></input>
+                    </p>
+                    <p className="full">
+                        <label>Comment</label>
+                        <textarea></textarea>
+                    </p>
                     <p className="full">
                         <button onClick={this.handleSubmit}>Submit</button>
                     </p>
                 </form>
              </div>
          </div>
-         { <pre>{JSON.stringify(this.state)}</pre>}
+         {/* <pre>{JSON.stringify(this.state)}</pre> */}
       </div>
 
     );
   }
 }
 
-export default connect(mapReduxStateToProps)(AddRun);
+export default connect(mapReduxStateToProps)(AddRunPopup);
