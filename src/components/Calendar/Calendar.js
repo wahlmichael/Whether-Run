@@ -54,10 +54,12 @@ class CalendarView extends Component {
           showPopup: !this.state.showPopup,
           clickedDate: date,
       });
+      this.props.dispatch({type: 'CLEAR_SINGLE_RUN'})
      }  
 
      onClickDay = (value) => {
        this.togglePopup(value)
+       console.log('in on click', this.runDateCheck(value));
       }
 
   render() {
@@ -79,7 +81,7 @@ class CalendarView extends Component {
         />
       }
       {/* {<button onClick={this.togglePopup.bind(this)}> Click To Launch Popup</button>} */}
-      {this.state.showPopup ?  <RunPopup  date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }
+      {this.state.showPopup ?  <RunPopup  runToday={this.runDateCheck(this.state.clickedDate)[1]} date={this.state.clickedDate} togglePopup={this.togglePopup.bind(this)}/> : null  }
       {/* <pre>{JSON.stringify(this.state.date)}</pre> */}
       {/* <pre>{JSON.stringify(this.props.weatherReducer)}</pre> */}
       </div>

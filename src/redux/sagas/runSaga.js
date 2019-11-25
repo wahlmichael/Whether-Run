@@ -30,10 +30,19 @@ function* fetchSpecificRun(action) {
                 year: action.payload.year,
             }
         })
-        yield put({
-            type: 'SET_SINGLE_RUN',
-            payload: response.data[0]
-        });
+        if(response.data[0]){
+            yield put({
+                type: 'SET_SINGLE_RUN',
+                payload: response.data[0],
+            });
+        }
+        else{
+            yield put({
+                type: 'SET_SINGLE_RUN',
+                payload: {},
+            });
+        }
+        
     } catch (error) {
         console.log('Specific run get failed', error);
     }

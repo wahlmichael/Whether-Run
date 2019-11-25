@@ -16,6 +16,7 @@ class RunPopup extends Component {
             year: this.props.date.getFullYear(),
         }
         this.props.dispatch({type: 'FETCH_SPECIFIC_RUN', payload: dateToSend})
+        console.log('poopyp oopy', this.props.runToday)
     }
 
     dayOfWeek = () => {
@@ -33,11 +34,15 @@ class RunPopup extends Component {
         return monthsInYear[month];
       }
     }
+
+    handleSubmit = () => {
+      console.log('submitting')
+    }
   render() {
     return (
       <div className="popup">
           <div className="popup-inner">
-            { this.props.singleRunReducer.day ? 
+            { !this.props.runToday ?  <AddRunPopup /> :
             <>
             <h1>Run on {this.dayOfWeek()} {this.monthOfYear()} {this.props.singleRunReducer.day}</h1>
             <ul className="run-info-in-popup">
@@ -45,10 +50,11 @@ class RunPopup extends Component {
                 <li>{this.props.singleRunReducer.run_type}</li>
             </ul>
             <div className="complete-run">
-              <h3>Complete Run</h3>
+              <h3>Complete</h3>
             </div>
-             </>: <AddRunPopup />
+             </>
             }
+            <button onClick={this.handleSubmit}>Complete Run</button>
             <button onClick={this.props.togglePopup}>Close</button>
           </div>
       </div>

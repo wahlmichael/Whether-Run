@@ -34,3 +34,9 @@
     text-align: center;
     padding-inline-start: none;
   }
+
+  .complete-run {
+    background: #545454;
+    color: #99ff99;
+    text-align: center;
+  }

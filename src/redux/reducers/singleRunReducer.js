@@ -2,8 +2,10 @@ const singleRunReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_SINGLE_RUN':
       return action.payload;
-    default:
+    case 'CLEAR_SINGLE_RUN':
       return {};
+    default:
+      return state;
   }
 };  
 
