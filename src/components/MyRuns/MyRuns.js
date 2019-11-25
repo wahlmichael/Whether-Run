@@ -54,7 +54,6 @@ class MyRuns extends Component {
                 })}
               </tbody>
             </table>
-            {/* <pre>{JSON.stringify(this.props.runsForCalendarReducer)}</pre> */}
         </div>
       </div>
     );

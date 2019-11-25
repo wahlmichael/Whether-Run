@@ -83,7 +83,6 @@ class AddRun extends Component {
                 </form>
              </div>
          </div>
-         { <pre>{JSON.stringify(this.state)}</pre>}
       </div>
 
     );
