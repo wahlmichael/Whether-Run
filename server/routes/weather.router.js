@@ -2,11 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const axios = require('axios')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * GETs weather data
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     axios({
         method: 'GET',
         params: {

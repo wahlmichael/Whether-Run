@@ -38,6 +38,10 @@ class RunPopup extends Component {
     handleSubmit = () => {
       console.log('submitting')
     }
+
+    handleChange = (event, property) => {
+      console.log(event.target.value, property)
+    }
   render() {
     return (
       <div className="popup">
@@ -46,11 +50,24 @@ class RunPopup extends Component {
             <>
             <h1>Run on {this.dayOfWeek()} {this.monthOfYear()} {this.props.singleRunReducer.day}</h1>
             <ul className="run-info-in-popup">
-                <li>{this.props.singleRunReducer.distance}</li>
-                <li>{this.props.singleRunReducer.run_type}</li>
+                <li><h3>Planned Distance: {this.props.singleRunReducer.distance}</h3></li>
+                <li><h3>Run Type: {this.props.singleRunReducer.run_type}</h3></li>
             </ul>
             <div className="complete-run">
-              <h3>Complete</h3>
+              <h3>Fill in the information below to complete run</h3>
+              <p>
+                <label>Distance Ran:</label>
+                <input onChange={(event) => {this.handleChange(event, 'distance')}} type="text"></input>
+                <label>Time:</label>
+                <input onChange={(event) => {this.handleChange(event, 'time')}} type="text"></input>
+              </p>
+              <p>
+                <label>Shoes Used:</label>
+                <select onChange={(event) => {this.handleChange(event, 'shoes')}} className="full">
+                    <option value="">Select</option>
+                    <option>Nike Air Zoom Pegasus 36</option>
+                </select>
+              </p>
             </div>
              </>
             }

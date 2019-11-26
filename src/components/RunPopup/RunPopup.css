@@ -39,4 +39,11 @@
     background: #545454;
     color: #99ff99;
     text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem
+  }
+
+  .complete-run input:focus {
+    outline-color: #99ff99;
   }

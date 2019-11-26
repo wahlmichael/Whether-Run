@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * GETs all Runs
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(req.user.id)
     const queryText = `SELECT * FROM "runs"
                         WHERE "user_id" = $1
@@ -24,7 +25,7 @@ router.get('/', (req, res) => {
  * GETs a run on a specific date
  */
 
-router.post('/specific', (req, res) => {
+router.post('/specific', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "runs"
                        WHERE "user_id" = $1 AND "day" = $2 AND "month" = $3 AND "year" = $4
                        ORDER BY "run_id" DESC;`;
@@ -43,7 +44,7 @@ router.post('/specific', (req, res) => {
  * POSTs a run
  */
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const queryText = `INSERT INTO "runs" ("day", "month", "year", "distance", "run_type", "user_id")
                        VALUES ($1, $2, $3, $4, $5, $6);`;
     const queryValues = [req.body.day, req.body.month, req.body.year, req.body.distance, req.body.runType, req.user.id];
@@ -61,7 +62,7 @@ router.post('/', (req, res) => {
  * PUTs a run completed
  */
 
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
     const queryText = `UPDATE "runs"
                        SET "completed" = true
                        WHERE "run_id" = $1;`;
@@ -80,7 +81,7 @@ router.put('/', (req, res) => {
  * DELETEs a run
  */
 
-router.delete('/', (req, res) => {
+router.delete('/', rejectUnauthenticated, (req, res) => {
     const queryText = `DELETE FROM "runs"
                        WHERE "run_id" = $1;`;
     const queryValues = [req.body.run_id];
