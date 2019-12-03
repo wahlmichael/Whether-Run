@@ -127,7 +127,7 @@ class RunPopup extends Component {
               <button className ="popup-btn" onClick={this.props.togglePopup}>Close</button>
               {this.props.runToday ? 
               <>{!this.props.singleRunReducer.completed === true && <button className ="popup-btn" onClick={() => this.handleCompleteClick(this.props.singleRunReducer.run_id)}>Complete Run</button>}
-              <button className ="popup-btn" onClick={this.handleClickOpen}>Delete Run</button></> : <button className ="popup-btn" >Add Run</button>}
+              <button className ="popup-btn" onClick={this.handleClickOpen}>Delete Run</button></> : ""}
             </div>
             </div>
           </div>

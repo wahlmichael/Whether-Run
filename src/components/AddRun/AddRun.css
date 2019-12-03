@@ -14,6 +14,7 @@
 
 .form-wrapper {
     box-shadow: 0 0 20px 0 #a6a6a6;
+    position: absolute;
 }
 
 .form-wrapper > * {

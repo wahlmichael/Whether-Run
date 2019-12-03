@@ -11,13 +11,12 @@ class AddRunPopup extends Component {
     state = {
         date: '',
         distance: '',
+        runType: '',
         runToSend: {},
         tilesDate: {},
     }
 
     componentDidMount = () => {
-        console.log(this.state)
-        console.log(this.props.date.getDate())
         this.setState({
             ...this.state,
             tilesDate:{
@@ -26,11 +25,9 @@ class AddRunPopup extends Component {
                 year: this.props.date.getFullYear(),
         }
         });
-        console.log(this.state.tilesDate)
       }
 
     handleChange = (event, property) => {
-        console.log(event.target.value)
         this.setState({
             ...this.state,
             [property]: event.target.value,
@@ -44,6 +41,7 @@ class AddRunPopup extends Component {
                 day: this.props.date.getDate(),
                 month: this.props.date.getMonth(),
                 year: this.state.tilesDate.year,
+                runType: this.state.runType,
                 distance: this.state.distance,
             }
         }, () => {
@@ -62,13 +60,21 @@ class AddRunPopup extends Component {
              </div>
              <div className="run-input">
                 <form>
-                    <p>
+                    <p className="full">
                         <label>Distance</label>
                         <input onChange={(event) => {this.handleChange(event, 'distance')}} type="text"></input>
                     </p>
-                    <p className="full">
-                        <label>Comment</label>
-                        <textarea></textarea>
+                    <p>
+                        <label>Run Type</label>
+                        <select onChange={(event) => {this.handleChange(event, 'runType')}} className="full">
+                            <option value="">Select</option>
+                            <option>Long Run</option>
+                            <option>Race Pace</option>
+                            <option>Easy</option>
+                            <option>Fartlek</option>
+                            <option>Hills</option>
+                            <option>Intervals</option>
+                        </select>
                     </p>
                     <p className="full">
                         <button type="button" onClick={this.handleSubmit}>Submit</button>
