@@ -11,9 +11,23 @@ class AddRunPopup extends Component {
     state = {
         date: '',
         distance: '',
-        time: '',
         runToSend: {},
+        tilesDate: {},
     }
+
+    componentDidMount = () => {
+        console.log(this.state)
+        console.log(this.props.date.getDate())
+        this.setState({
+            ...this.state,
+            tilesDate:{
+                day: this.props.dayOfWeek(this.props.date.getDate()),
+                month: this.props.monthOfYear(this.props.date.getMonth()),
+                year: this.props.date.getFullYear(),
+        }
+        });
+        console.log(this.state.tilesDate)
+      }
 
     handleChange = (event, property) => {
         console.log(event.target.value)
@@ -27,16 +41,16 @@ class AddRunPopup extends Component {
         this.setState({
             ...this.state,
             runToSend: {
-                day: this.state.date.substr(8, 2),
-                month: this.state.date.substr(5, 2) - 1,
-                year: this.state.date.substr(0, 4),
+                day: this.props.date.getDate(),
+                month: this.props.date.getMonth(),
+                year: this.state.tilesDate.year,
                 distance: this.state.distance,
-                time: this.state.time,
             }
         }, () => {
             this.props.dispatch({type: 'ADD_RUN_SAGA', payload: this.state.runToSend})
-            console.log(this.state.runToSend)
-        })
+            this.props.togglePopup();
+        });
+
 
     }
   render() {
@@ -44,44 +58,24 @@ class AddRunPopup extends Component {
       <div className="add-run-container">
          <div className="form-wrapper">
              <div className="info">
-                <h3>Please enter the information of your run</h3>
-                <ul className="run-info-list">
-                    <li>Date</li>
-                    <li>Distance in miles</li>
-                    <li>Time in minutes</li>
-                    <li>Shoes used</li>
-                    <li>Leave a comment!</li>
-                </ul>
+                <h2>Add run for {this.state.tilesDate.day}, {this.state.tilesDate.month} {this.props.date.getDate()}</h2>
              </div>
              <div className="run-input">
                 <form>
                     <p>
-                        <label>Date</label>
-                        <input onChange={(event) => {this.handleChange(event, 'date')}} type="date"></input>
-                    </p>
-                    <p>
                         <label>Distance</label>
                         <input onChange={(event) => {this.handleChange(event, 'distance')}} type="text"></input>
-                    </p>
-                    <p>
-                        <label>Time</label>
-                        <input onChange={(event) => {this.handleChange(event, 'time')}} type="text"></input>
-                    </p>
-                    <p>
-                        <label>Shoes</label>
-                        <input type="text"></input>
                     </p>
                     <p className="full">
                         <label>Comment</label>
                         <textarea></textarea>
                     </p>
                     <p className="full">
-                        <button onClick={this.handleSubmit}>Submit</button>
+                        <button type="button" onClick={this.handleSubmit}>Submit</button>
                     </p>
                 </form>
              </div>
          </div>
-         {/* <pre>{JSON.stringify(this.state)}</pre> */}
       </div>
 
     );

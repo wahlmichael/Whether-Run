@@ -26,11 +26,13 @@ class TileContent extends Component {
       </div>
       {this.props.run === null ? null :  
         <div className="tileContent">
-         <i className="green fas fa-running"></i>
+          {this.props.run.completed ? <i className="green fas fa-check"></i> : <i className="green fas fa-running"></i>}
          <div>
            <span className="inTile">{this.props.run.distance}</span>
            <br/>
            <span className="inTile">{this.props.run.run_type}</span>
+           <br />
+           {this.props.run.completed && <span>{this.props.run.time}</span>}
          </div>
 
       </div>}

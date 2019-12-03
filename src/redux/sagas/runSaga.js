@@ -54,7 +54,9 @@ function* completeRun(action) {
             method: 'PUT',
             url: '/api/runs',
             data: {
-                run_id: action.payload,
+                run_id: action.payload[1],
+                distance: action.payload[0].distance,
+                time: action.payload[0].time,
             }
         })
         yield put ({type: "FETCH_RUNS_FOR_CALENDAR"})
@@ -81,6 +83,7 @@ function* deleteRun(action) {
 function* addRun(action) {
     try {
         yield axios.post('/api/runs', action.payload);
+        yield put ({type: "FETCH_RUNS_FOR_CALENDAR"});
     } catch (error) {
         console.log('Run POST failed', error);
     }

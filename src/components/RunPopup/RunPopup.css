@@ -36,14 +36,43 @@
   }
 
   .complete-run {
+    position: relative;
     background: #545454;
     color: #99ff99;
     text-align: center;
     width: 80%;
-    margin: 0 auto;
+    height: 70%;
     padding: 1rem
   }
 
   .complete-run input:focus {
     outline-color: #99ff99;
+  }
+
+  .popup-buttons {
+    background: #545454;
+    height: 50px;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .popup-btn {
+    background-color: white;
+    color: black;
+    border: 3px solid #99ff99; 
+    margin: auto;
+    padding: 10px 24px;
+    border-radius: 2px;
+  }
+
+  .popop-btn:hover {
+    cursor: pointer;
+  }
+
+  .popup-inner-inner {
+    height: 100%;
+    position: relative;
   }

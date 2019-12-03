@@ -35,7 +35,7 @@ class AddRun extends Component {
             }
         }, () => {
             this.props.dispatch({type: 'ADD_RUN_SAGA', payload: this.state.runToSend})
-            console.log(this.state.runToSend)
+            setTimeout(() => this.props.history.push('/home'),75)
         })
 
     }

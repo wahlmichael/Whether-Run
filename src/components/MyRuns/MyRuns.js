@@ -47,7 +47,7 @@ class MyRuns extends Component {
                   }
                   console.log(runClass)
                   return <tr 
-                         key={run.run_id} className={runClass}><td>{run.month}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
+                         key={run.run_id} className={runClass}><td>{run.month + 1}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
                          <td><span onClick={() => this.handleDeleteClick(run.run_id)} className="deleteRun">delete</span></td>
                          <td><span onClick={() => this.handleCompleteClick(run.run_id)} className="completeRun">complete</span></td>
                          </tr>

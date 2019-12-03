@@ -64,9 +64,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 router.put('/', rejectUnauthenticated, (req, res) => {
     const queryText = `UPDATE "runs"
-                       SET "completed" = true
-                       WHERE "run_id" = $1;`;
-    const queryValues = [req.body.run_id];
+                       SET "completed" = true, "distance" = $1, "time" = $2, "shoe_id" = 0
+                       WHERE "run_id" = $3;`;
+    const queryValues = [req.body.distance, req.body.time, req.body.run_id];
     pool.query(queryText, queryValues)
     .then((() => {
         res.sendStatus(200)
