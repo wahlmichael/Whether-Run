@@ -4,17 +4,19 @@
     cursor: pointer;
 }
 
-.completeRun {
-    color: green;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 .myRuns table {
     width: 100%;
     text-align: center;
 }
 
-.completedRun {
-    background: #99ff99;
+.myRuns h1 {
+    text-align: center;
+}
+
+.myRuns tr {
+    height: 2rem;
+}
+
+.myRuns tr:nth-child(even){
+    background: #f5f5f5;
 }
