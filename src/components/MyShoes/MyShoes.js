@@ -11,7 +11,7 @@ class MyShoes extends Component {
   render() {
     return (
       <div className="my-shoes-container">
-        My Shoes go ehre
+        My Shoes go here
       </div>
 
     );

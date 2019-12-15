@@ -16,16 +16,20 @@ class MyRuns extends Component {
     this.props.dispatch({type: 'DELETE_RUN', payload: id})
   }
 
-  findTimePerDistance = (time, distance) => {
-    if(time === null){
-      return ''
-    } else {
-      const hours = time.substr(0,2);
-      const minutes = time.substr(3,2);
-      const seconds = time.substr(5,2);
-      return minutes;
-    }
-  }
+  // findTimePerDistance = (time, distance) => {
+  //   if(time === null){
+  //     return ''
+  //   } else {
+  //     const timePerDistance = 0;
+  //     let totalTime = 0;
+  //     const hours = time.substr(0,2) * 60;
+  //     const minutes = time.substr(3,2);
+  //     const seconds = time.substr(5,2);
+  //     totalTime = hours + minutes;
+  //     totalTime = totalTime / distance;
+  //     return totalTime;
+  //   }
+  // }
 
   render() {
     return (
@@ -38,7 +42,7 @@ class MyRuns extends Component {
                   <th>Date</th>
                   <th>Distance</th>
                   <th>Time</th>
-                  <th>Time per Distance</th>
+                  {/* <th>Time per Distance</th> */}
                   <th>Completed?</th>
                   <th>Delete</th>
                 </tr>
@@ -46,12 +50,12 @@ class MyRuns extends Component {
               <tbody>
                 {this.props.runsForCalendarReducer.map(run => {
                   var completed = "";
-                  if(run.completed == true){
+                  if(run.completed === true){
                     completed = 'complete'
                   } else {completed = 'incomplete'}
                   return <tr 
                         key={run.run_id}><td>{run.month + 1}/{run.day}</td><td>{run.distance}</td><td>{run.time}</td>
-                        <td>{this.findTimePerDistance(run.time, run.distance)}</td>
+                        {/* <td>{this.findTimePerDistance(run.time, run.distance)}</td> */}
                         <td><span onClick={() => this.handleCompleteClick(run.run_id)} className="completeRun">{completed}</span></td>
                         <td><span onClick={() => this.handleDeleteClick(run.run_id)} className="deleteRun">delete</span></td>
                         </tr>

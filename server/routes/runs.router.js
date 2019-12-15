@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(req.user.id)
     const queryText = `SELECT * FROM "runs"
                         WHERE "user_id" = $1
-                        ORDER BY "run_id";`;
+                        ORDER BY "run_id" desc;`;
     pool.query(queryText, [req.user.id])
         .then((response => {
             res.send(response.rows)
