@@ -1,5 +1,5 @@
 # Whether Run
-Deployed site:
+Deployed site: https://whether-run.herokuapp.com/#/home
 ## Description
 A scheduling app for running training plans, particularly useful for people living in areas with harsh winters. Users can see the upcoming weather, and adjust their running schedule accordingly within the app.
 #### Features
